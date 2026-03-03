@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карьерум - Найди работу мечты</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f8fafd;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Шапка */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 119, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0077ff;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span {
+            color: #00a3ff;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #0077ff;
+        }
+        
+        .nav-link.active {
+            color: #0077ff;
+            font-weight: 600;
+        }
+        
+        .btn-nav {
+            background: #0077ff;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+        
+        .btn-nav:hover {
+            background: #0055cc;
+            color: white;
+        }
+        
+        /* Герой-секция */
+        .hero {
+            background: linear-gradient(135deg, #0077ff 0%, #00a3ff 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-title span {
+            color: #ffffff;
+            background: rgba(255,255,255,0.2);
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 119, 255, 0.3);
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #0077ff;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        /* Статистика */
+        .stats {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .stats h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            font-size: 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: #f0f7ff;
+            border-radius: 12px;
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 119, 255, 0.1);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0077ff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #4a5568;
+            font-weight: 500;
+        }
+        
+        /* Преимущества */
+        .features {
+            padding: 4rem 0;
+            background: #f0f7ff;
+        }
+        
+        .features h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            font-size: 2rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 119, 255, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 119, 255, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .feature-card p {
+            color: #4a5568;
+        }
+        
+        /* Вакансии */
+        .vacancies {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .vacancies h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            font-size: 2rem;
+        }
+        
+        .vacancies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .vacancy-card {
+            background: #f0f7ff;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 119, 255, 0.1);
+        }
+        
+        .vacancy-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 119, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .vacancy-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .vacancy-salary {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0077ff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .vacancy-schedule {
+            color: #4a5568;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 119, 255, 0.2);
+        }
+        
+        .vacancy-requirements {
+            margin: 1rem 0;
+            color: #2c3e50;
+        }
+        
+        .vacancy-requirements strong {
+            color: #0077ff;
+        }
+        
+        .vacancy-benefits {
+            margin: 1rem 0;
+            color: #2c3e50;
+        }
+        
+        .vacancy-benefits strong {
+            color: #0077ff;
+        }
+        
+        .btn-apply {
+            display: inline-block;
+            background: #0077ff;
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-weight: 500;
+            transition: background 0.3s;
+            width: 100%;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-apply:hover {
+            background: #0055cc;
+        }
+        
+        /* Модальное окно для отклика */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #4a5568;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        
+        .modal-close:hover {
+            background: #f0f7ff;
+            color: #0077ff;
+        }
+        
+        .modal h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            padding-right: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0077ff;
+            box-shadow: 0 0 0 3px rgba(0, 119, 255, 0.1);
+        }
+        
+        .btn-submit {
+            background: #0077ff;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        
+        .btn-submit:hover {
+            background: #0055cc;
+        }
+        
+        .btn-submit:disabled {
+            background: #a0aec0;
+            cursor: not-allowed;
+        }
+        
+        .success-message {
+            display: none;
+            background: #10b981;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Поддержка */
+        .support {
+            padding: 4rem 0;
+            background: #f0f7ff;
+        }
+        
+        .support h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            font-size: 2rem;
+        }
+        
+        .support-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .support-info {
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 119, 255, 0.05);
+        }
+        
+        .support-info h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .support-info p {
+            color: #4a5568;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f0f7ff;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+        }
+        
+        .contact-text {
+            color: #2c3e50;
+        }
+        
+        .support-form {
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 119, 255, 0.05);
+        }
+        
+        .support-form h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        /* Подвал */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #00a3ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: #0077ff;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .vacancies-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #0077ff;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0055cc;
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">Карьер<span>ум</span></div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Главная</a>
+                <a href="#vacancies" class="nav-link">Вакансии</a>
+                <a href="#support" class="nav-link">Поддержка</a>
+                <a href="#contacts" class="nav-link">Контакты</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 class="hero-title">Найди работу <span>мечты</span> в Карьерум</h1>
+            <p class="hero-subtitle">Более 150 вакансий, прямой отклик на сайте, быстрая обратная связь</p>
+            <div class="hero-buttons">
+                <a href="#vacancies" class="btn btn-primary">Смотреть вакансии</a>
+                <a href="#support" class="btn btn-secondary">Связаться с нами</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Статистика -->
+    <section class="stats">
+        <div class="container">
+            <h2>Карьерум в цифрах</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">150+</div>
+                    <div class="stat-label">Всего вакансий</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">50+</div>
+                    <div class="stat-label">Компаний</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">300+</div>
+                    <div class="stat-label">Трудоустроено</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">Поддержка</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="features">
+        <div class="container">
+            <h2>Почему выбирают Карьерум</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Удобный отклик</h3>
+                    <p>Откликайтесь на вакансии прямо на сайте за 2 минуты</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Быстрый ответ</h3>
+                    <p>Менеджеры связываются в течение 24 часов</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Безопасно</h3>
+                    <p>Ваши данные надежно защищены</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Бесплатно</h3>
+                    <p>Все услуги абсолютно бесплатны для соискателей</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Вакансии -->
+    <section class="vacancies" id="vacancies">
+        <div class="container">
+            <h2>Актуальные вакансии</h2>
+            <div class="vacancies-grid" id="vacanciesList">
+                <!-- Вакансия 1: Особая -->
+                <div class="vacancy-card" data-vacancy="special">
+                    <h3>🌟 Ведущий специалист по работе с клиентами</h3>
+                    <div class="vacancy-salary">💰 от 80 000 до 120 000 ₽</div>
+                    <div class="vacancy-schedule">⏰ гибкий, удаленная работа</div>
+                    <div class="vacancy-requirements">
+                        <strong>Требования:</strong>
+                        <p>• Опыт работы от 1 года<br>• Коммуникабельность<br>• Ответственность</p>
+                    </div>
+                    <div class="vacancy-benefits">
+                        <strong>Преимущества:</strong>
+                        <p>• Официальное трудоустройство<br>• Карьерный рост<br>• Премии и бонусы</p>
+                    </div>
+                    <button class="btn-apply" onclick="openApplicationForm('special', '🌟 Ведущий специалист по работе с клиентами')">Откликнуться</button>
+                </div>
+
+                <!-- Вакансия 2: Документовед -->
+                <div class="vacancy-card" data-vacancy="documents">
+                    <h3>📄 Документовед</h3>
+                    <div class="vacancy-salary">💰 от 45 000 до 65 000 ₽</div>
+                    <div class="vacancy-schedule">⏰ 5/2, офис</div>
+                    <div class="vacancy-requirements">
+                        <strong>Требования:</strong>
+                        <p>• Высшее образование<br>• Внимательность<br>• Знание делопроизводства</p>
+                    </div>
+                    <div class="vacancy-benefits">
+                        <strong>Преимущества:</strong>
+                        <p>• Соцпакет<br>• Стабильный график<br>• ДМС</p>
+                    </div>
+                    <button class="btn-apply" onclick="openApplicationForm('documents', '📄 Документовед')">Откликнуться</button>
+                </div>
+
+                <!-- Вакансия 3: Менеджер -->
+                <div class="vacancy-card" data-vacancy="manager">
+                    <h3>💼 Менеджер по продажам</h3>
+                    <div class="vacancy-salary">💰 от 50 000 до 100 000 ₽</div>
+                    <div class="vacancy-schedule">⏰ гибкий график</div>
+                    <div class="vacancy-requirements">
+                        <strong>Требования:</strong>
+                        <p>• Опыт продаж<br>• Грамотная речь<br>• Активность</p>
+                    </div>
+                    <div class="vacancy-benefits">
+                        <strong>Преимущества:</strong>
+                        <p>• Проценты с продаж<br>• Карьерный рост</p>
+                    </div>
+                    <button class="btn-apply" onclick="openApplicationForm('manager', '💼 Менеджер по продажам')">Откликнуться</button>
+                </div>
+
+                <!-- Вакансия 4: Оператор -->
+                <div class="vacancy-card" data-vacancy="operator">
+                    <h3>📞 Оператор call-центра</h3>
+                    <div class="vacancy-salary">💰 от 40 000 до 60 000 ₽</div>
+                    <div class="vacancy-schedule">⏰ сменный график</div>
+                    <div class="vacancy-requirements">
+                        <strong>Требования:</strong>
+                        <p>• Коммуникабельность<br>• Стрессоустойчивость</p>
+                    </div>
+                    <div class="vacancy-benefits">
+                        <strong>Преимущества:</strong>
+                        <p>• Удаленная работа<br>• Гибкий график</p>
+                    </div>
+                    <button class="btn-apply" onclick="openApplicationForm('operator', '📞 Оператор call-центра')">Откликнуться</button>
+                </div>
+
+                <!-- Вакансия 5: Курьер -->
+                <div class="vacancy-card" data-vacancy="courier">
+                    <h3>🚚 Курьер</h3>
+                    <div class="vacancy-salary">💰 от 35 000 до 70 000 ₽</div>
+                    <div class="vacancy-schedule">⏰ свободный график</div>
+                    <div class="vacancy-requirements">
+                        <strong>Требования:</strong>
+                        <p>• Свой транспорт<br>• Знание города</p>
+                    </div>
+                    <div class="vacancy-benefits">
+                        <strong>Преимущества:</strong>
+                        <p>• Сдельная оплата<br>• Бонусы</p>
+                    </div>
+                    <button class="btn-apply" onclick="openApplicationForm('courier', '🚚 Курьер')">Откликнуться</button>
+                </div>
+
+                <!-- Вакансия 6: Водитель -->
+                <div class="vacancy-card" data-vacancy="driver">
+                    <h3>🚗 Водитель</h3>
+                    <div class="vacancy-salary">💰 от 60 000 до 90 000 ₽</div>
+                    <div class="vacancy-schedule">⏰ сменный график</div>
+                    <div class="vacancy-requirements">
+                        <strong>Требования:</strong>
+                        <p>• Категория B<br>• Опыт от 3 лет</p>
+                    </div>
+                    <div class="vacancy-benefits">
+                        <strong>Преимущества:</strong>
+                        <p>• Соцпакет<br>• Премии</p>
+                    </div>
+                    <button class="btn-apply" onclick="openApplicationForm('driver', '🚗 Водитель')">Откликнуться</button>
+                </div>
+
+                <!-- Вакансия 7: Продавец -->
+                <div class="vacancy-card" data-vacancy="seller">
+                    <h3>🛒 Продавец-консультант</h3>
+                    <div class="vacancy-salary">💰 от 40 000 до 60 000 ₽</div>
+                    <div class="vacancy-schedule">⏰ 2/2</div>
+                    <div class="vacancy-requirements">
+                        <strong>Требования:</strong>
+                        <p>• Опыт работы<br>• Знание товара</p>
+                    </div>
+                    <div class="vacancy-benefits">
+                        <strong>Преимущества:</strong>
+                        <p>• Скидки на товары<br>• Премии</p>
+                    </div>
+                    <button class="btn-apply" onclick="openApplicationForm('seller', '🛒 Продавец-консультант')">Откликнуться</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция поддержки -->
+    <section class="support" id="support">
+        <div class="container">
+            <h2>Связь с поддержкой</h2>
+            <div class="support-grid">
+                <div class="support-info">
+                    <h3>Как мы можем помочь?</h3>
+                    <p>Если у вас возникли вопросы по вакансиям, оформлению анкет или работе сайта - наша команда поддержки всегда готова помочь!</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-text">support@karerum.ru</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-text">@karerum_support</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div class="contact-text">Время работы: круглосуточно</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">⚡</div>
+                        <div class="contact-text">Среднее время ответа: 2 часа</div>
+                    </div>
+                </div>
+                
+                <div class="support-form">
+                    <h3>Написать в поддержку</h3>
+                    <form id="supportForm">
+                        <div class="form-group">
+                            <label for="supportName">Ваше имя *</label>
+                            <input type="text" id="supportName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="supportContact">Телефон или Telegram *</label>
+                            <input type="text" id="supportContact" placeholder="@username или +7..." required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="supportMessage">Сообщение *</label>
+                            <textarea id="supportMessage" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit" id="supportSubmitBtn">Отправить сообщение</button>
+                    </form>
+                    <div class="success-message" id="supportSuccessMessage">
+                        ✅ Сообщение отправлено! Мы свяжемся с вами.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="footer" id="contacts">
+        <div class="container">
+            <p>© 2024 Карьерум. Все права защищены.</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">
+                <a href="#home">Главная</a> • 
+                <a href="#vacancies">Вакансии</a> • 
+                <a href="#support">Поддержка</a> • 
+                <a href="#contacts">Контакты</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Модальное окно для отклика на вакансию -->
+    <div class="modal" id="applicationModal">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2>Отклик на вакансию</h2>
+            <div id="selectedVacancy" style="margin-bottom: 1rem; font-weight: 500; color: #0077ff;"></div>
+            
+            <form id="applicationForm">
+                <input type="hidden" id="vacancyId">
+                <input type="hidden" id="vacancyTitle">
+                
+                <div class="form-group">
+                    <label for="fullName">ФИО *</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Номер телефона *</label>
+                    <input type="text" id="phone" placeholder="+7 (999) 123-45-67" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telegram">Telegram username (необязательно)</label>
+                    <input type="text" id="telegram" placeholder="@username">
+                </div>
+                
+                <div class="form-group">
+                    <label for="city">Город *</label>
+                    <input type="text" id="city" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="birthDate">Дата рождения *</label>
+                    <input type="text" id="birthDate" placeholder="ДД.ММ.ГГГГ" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="experience">Опыт работы *</label>
+                    <textarea id="experience" rows="4" placeholder="Опишите ваш опыт работы" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn-submit" id="applicationSubmitBtn">Отправить отклик</button>
+            </form>
+            <div class="success-message" id="applicationSuccessMessage">
+                ✅ Отклик успешно отправлен! Менеджер свяжется с вами.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== НАСТРОЙКИ TELEGRAM ====================
+        const TELEGRAM_TOKEN = '8701509347:AAEQsM1j88IIsFxkmK4za5GMb72-WV1t2k4';  // ВСТАВЬТЕ ВАШ ТОКЕН
+        const VACANCY_CHAT_ID = '-1003504598402';  // ВСТАВЬТЕ ID ГРУППЫ ДЛЯ ОТКЛИКОВ
+        const SUPPORT_CHAT_ID = '-1003758462577';  // ВСТАВЬТЕ ID ГРУППЫ ДЛЯ ПОДДЕРЖКИ
+        
+        // ==================== ФУНКЦИИ ДЛЯ МОДАЛЬНОГО ОКНА ====================
+        function openApplicationForm(vacancyId, vacancyTitle) {
+            const modal = document.getElementById('applicationModal');
+            document.getElementById('vacancyId').value = vacancyId;
+            document.getElementById('vacancyTitle').value = vacancyTitle;
+            document.getElementById('selectedVacancy').innerHTML = `<strong>Выбранная вакансия:</strong> ${vacancyTitle}`;
+            
+            document.getElementById('applicationForm').reset();
+            document.getElementById('applicationSuccessMessage').style.display = 'none';
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            setTimeout(() => {
+                document.getElementById('fullName').focus();
+            }, 100);
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('applicationModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modal = document.getElementById('applicationModal');
+                if (modal.classList.contains('active')) {
+                    closeModal();
+                }
+            }
+        });
+        
+        document.getElementById('applicationModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeModal();
+            }
+        });
+        
+        // ==================== ОТПРАВКА ОТКЛИКА НА ВАКАНСИЮ ====================
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('applicationSubmitBtn');
+            const successMessage = document.getElementById('applicationSuccessMessage');
+            
+            // Валидация
+            const fullName = document.getElementById('fullName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const city = document.getElementById('city').value.trim();
+            const birthDate = document.getElementById('birthDate').value.trim();
+            const experience = document.getElementById('experience').value.trim();
+            
+            if (!fullName || !phone || !city || !birthDate || !experience) {
+                alert('Пожалуйста, заполните все обязательные поля');
+                return;
+            }
+            
+            // Простая проверка телефона
+            const phoneRegex = /^[\+\d\s\(\)\-]{10,20}$/;
+            if (!phoneRegex.test(phone)) {
+                alert('Пожалуйста, введите корректный номер телефона');
+                return;
+            }
+            
+            // Простая проверка даты
+            const dateRegex = /^\d{2}\.\d{2}\.\d{4}$/;
+            if (!dateRegex.test(birthDate)) {
+                alert('Пожалуйста, введите дату в формате ДД.ММ.ГГГГ');
+                return;
+            }
+            
+            // Данные для отправки
+            const formData = {
+                vacancy_title: document.getElementById('vacancyTitle').value,
+                full_name: fullName,
+                phone: phone,
+                telegram: document.getElementById('telegram').value.trim() || 'не указан',
+                city: city,
+                birth_date: birthDate,
+                experience: experience,
+                date: new Date().toLocaleString('ru-RU'),
+                source: 'САЙТ Карьерум'
+            };
+            
+            // Формируем сообщение
+            const text = `🔔 <b>НОВЫЙ ОТКЛИК НА ВАКАНСИЮ (С САЙТА)</b>
+
+━━━━━━━━━━━━━━━━━━━━━━━
+<b>💼 Вакансия:</b> ${formData.vacancy_title}
+━━━━━━━━━━━━━━━━━━━━━━━
+👤 <b>ФИО:</b> ${formData.full_name}
+📞 <b>Телефон:</b> ${formData.phone}
+✈️ <b>Telegram:</b> ${formData.telegram}
+🏙 <b>Город:</b> ${formData.city}
+📅 <b>Дата рождения:</b> ${formData.birth_date}
+━━━━━━━━━━━━━━━━━━━━━━━
+📝 <b>Опыт работы:</b>
+${formData.experience}
+━━━━━━━━━━━━━━━━━━━━━━━
+⏰ <b>Время:</b> ${formData.date}
+🌐 <b>Источник:</b> ${formData.source}`;
+            
+            submitBtn.textContent = 'Отправка...';
+            submitBtn.disabled = true;
+            
+            // ПРЯМАЯ ОТПРАВКА В TELEGRAM
+            fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: VACANCY_CHAT_ID,
+                    text: text,
+                    parse_mode: 'HTML'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    successMessage.style.display = 'block';
+                    document.getElementById('applicationForm').reset();
+                    submitBtn.textContent = 'Отправлено!';
+                    setTimeout(() => closeModal(), 2000);
+                } else {
+                    alert('Ошибка Telegram: ' + data.description);
+                    submitBtn.textContent = 'Отправить отклик';
+                    submitBtn.disabled = false;
+                }
+            })
+            .catch(error => {
+                alert('Ошибка соединения: ' + error.message);
+                submitBtn.textContent = 'Отправить отклик';
+                submitBtn.disabled = false;
+            });
+        });
+        
+        // ==================== ОТПРАВКА В ПОДДЕРЖКУ ====================
+        document.getElementById('supportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('supportSubmitBtn');
+            const successMessage = document.getElementById('supportSuccessMessage');
+            
+            const name = document.getElementById('supportName').value.trim();
+            const contact = document.getElementById('supportContact').value.trim();
+            const message = document.getElementById('supportMessage').value.trim();
+            
+            if (!name || !contact || !message) {
+                alert('Пожалуйста, заполните все поля');
+                return;
+            }
+            
+            const formData = {
+                name: name,
+                contact: contact,
+                message: message,
+                date: new Date().toLocaleString('ru-RU'),
+                source: 'САЙТ Карьерум'
+            };
+            
+            const text = `🆘 <b>ЗАПРОС В ПОДДЕРЖКУ (С САЙТА)</b>
+
+━━━━━━━━━━━━━━━━━━━━━━━
+👤 <b>Имя:</b> ${formData.name}
+📞 <b>Контакт:</b> ${formData.contact}
+━━━━━━━━━━━━━━━━━━━━━━━
+📝 <b>Сообщение:</b>
+${formData.message}
+━━━━━━━━━━━━━━━━━━━━━━━
+⏰ <b>Время:</b> ${formData.date}
+🌐 <b>Источник:</b> ${formData.source}`;
+            
+            submitBtn.textContent = 'Отправка...';
+            submitBtn.disabled = true;
+            
+            // ПРЯМАЯ ОТПРАВКА В TELEGRAM
+            fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: SUPPORT_CHAT_ID,
+                    text: text,
+                    parse_mode: 'HTML'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    successMessage.style.display = 'block';
+                    document.getElementById('supportForm').reset();
+                    submitBtn.textContent = 'Отправлено!';
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 3000);
+                } else {
+                    alert('Ошибка Telegram: ' + data.description);
+                }
+            })
+            .catch(error => {
+                alert('Ошибка соединения: ' + error.message);
+            })
+            .finally(() => {
+                submitBtn.textContent = 'Отправить сообщение';
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
